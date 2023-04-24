@@ -25,6 +25,6 @@ public:
 	void insertionSort();
 	void selectionSort();
 	void shellSort();
-	void mergeSort();
+	void mergeSort(int, Lista*);
 	void quickSort();
 };

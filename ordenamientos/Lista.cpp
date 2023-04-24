@@ -265,8 +265,67 @@ void Lista::shellSort() {
 
 
 }
-void Lista::mergeSort() {
+void Lista::mergeSort(int contador, Lista* list) {
+	Lista* derecha = new Lista;
+	Lista* izquierda = new Lista;
+	Nodo* aux = list->header;
+	int med = contador / 2;
+	int dif = contador % 2;
+	int i, j;
 
+	if (list->tamanoLista() > 1) {
+		i = 0;
+		while (aux && i < med) {
+			izquierda->insertarInicio(aux->product);
+			i++;
+			aux = aux->sig;
+		}
+		j = 0;
+		while (aux && j < med + dif) {
+			derecha->insertarInicio(aux->product);
+			j++;
+			aux = aux->sig;
+		}
+		mergeSort(izquierda->tamanoLista(), izquierda);
+		mergeSort(derecha->tamanoLista(), derecha);
+
+
+		Nodo* iz = izquierda->header;
+		Nodo* de = derecha->header;
+		aux = list->header;
+		i = 0;
+		while (aux && iz && de) {
+			if (iz->product.getId() < de->product.getId()) {
+				aux->product = iz->product;
+				iz = iz->sig;
+				aux = aux->sig;
+			}
+			else {
+				aux->product = de->product;
+				de = de->sig;
+				aux = aux->sig;
+
+			}
+		}
+		if (iz) {
+			while (iz) {
+				aux->product = iz->product;
+				iz = iz->sig;
+				aux = aux->sig;
+
+
+			}
+		}
+		if (de) {
+			while (de) {
+				aux->product = de->product;
+				de = de->sig;
+				aux = aux->sig;
+
+			}
+
+		}
+	}
 
 }
 void Lista::quickSort() {

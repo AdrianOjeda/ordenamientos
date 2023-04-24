@@ -16,7 +16,7 @@ int main()
     cout << "*** ALMACEN DE PRODUCTOS *** " << endl << endl;
     do {
         cout << "Eliga una opcion: " << endl << "1: Insertar producto al inicio" << endl << "2: Insertar producto al final" << endl << "3: Insertar producto en posicion determinada" << endl << "4: Eliminar producto" << endl << "5: Eliminar todo" << endl << "6: Buscar producto" << endl << "7: Inicializa lista" << endl << "8: Vacia" << endl << "9: Mostrar el primer producto de la lista" << endl << "10: Mostrar el ultimo producto de la lista" << endl << "11: Mostrar el tamano de la lista" << endl << "12: Siguiente" << endl << "13: Anterior" << endl << "14: Mostrar todo" << endl;
-
+        cout << "15. Ordenar" << endl;
         cin >> opcion;
         switch (opcion) {
         case 1: {
@@ -237,7 +237,8 @@ int main()
                 cout << "Lista ordenada con exito!" << endl;
                 break;
             }case 5: {
-                list->mergeSort();
+                int contador = list->tamanoLista();
+                list->mergeSort(contador, list);
                 cout << "Lista ordenada con exito!" << endl;
                 break;
             }case 6: {
@@ -251,7 +252,7 @@ int main()
             }
             }
 
-
+            break;
         }
         default: {
             cout << "Ingrese una opcion valida!!" << endl;
